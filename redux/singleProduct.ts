@@ -3,14 +3,16 @@ import { StaticImageData } from "next/image";
 
 interface ProductsTypes {
   id: number;
-  name: string;
+  name?: string;
   oldPrice?: number;
+  title?:string,
   newPrice?: number;
   description?: string;
   category?:string;
+  quantity?: number;
   image: string | StaticImageData;
   rated?: string;
-  stock: number;
+  stock?: number;
 }
 
 interface InitialState {
