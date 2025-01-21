@@ -7,7 +7,7 @@ import { IoSearch } from "react-icons/io5";
 import { BsCart } from "react-icons/bs";
 import { CiHeart } from "react-icons/ci";
 import Link from "next/link";
-import { client } from "@/sanity-migration/sanityClient";
+import { client } from "@/sanity/lib/client";
 import { urlFor } from "../../sanity/lib/image";
 import { addToCart } from "@/redux/productSlice";
 import { addToWishlist } from "@/redux/wishlistSlice";
