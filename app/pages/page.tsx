@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from 'react';
 import { client } from '../../sanity/lib/client';
+import Image from 'next/image';
 
 async function fetchProducts() {
   // Fetch products from Sanity
@@ -65,7 +66,7 @@ function ProductListing() {
         // Product Grid
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 p-6">
           {filteredProducts.length > 0 ? (
-            filteredProducts.map((product: any) => {
+            filteredProducts.map((product) => {
               // Calculate discount if available
               const discountAmount = product.discountPercentage
                 ? (product.price * product.discountPercentage) / 100
@@ -77,7 +78,7 @@ function ProductListing() {
                   key={product._id}
                   className="bg-white p-4 rounded-lg shadow-md transform transition-transform hover:scale-105"
                 >
-                  <img
+                  <Image
                     src={product.image.asset.url}
                     alt={product.name}
                     className="w-full h-56 object-contain rounded-md"

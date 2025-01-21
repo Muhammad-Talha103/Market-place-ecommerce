@@ -66,14 +66,7 @@ const Signup = () => {
     }
 
     try {
-      // Push data to Sanity
-      const res = await client.create({
-        _type: "signup", // Sanity document type
-        fullName,
-        email,
-        password, // Note: Avoid saving passwords directly in production
-        termsAccepted,
-      });
+    
 
       // Reset form fields upon success
       setFullName("");
