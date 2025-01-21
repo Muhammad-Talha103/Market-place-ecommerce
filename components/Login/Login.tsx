@@ -6,7 +6,7 @@ import { Josefin_Sans, Lato } from "next/font/google";
 import Image from "next/image";
 import Hero from "@/shared/HeroShared";
 import Link from "next/link";
-import { client } from "@/sanity-migration/sanityClient"; // Make sure this path is correct
+import { client } from "@/sanity/lib/client"; // Make sure this path is correct
 
 const josefinFont = Josefin_Sans({
   subsets: ["latin"],

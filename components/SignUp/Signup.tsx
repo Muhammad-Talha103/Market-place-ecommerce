@@ -44,7 +44,7 @@ const Signup = () => {
     fetchEmails();
   }, []);
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     // Basic validation
