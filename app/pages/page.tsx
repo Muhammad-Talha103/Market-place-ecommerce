@@ -3,6 +3,19 @@ import { useEffect, useState } from 'react';
 import { client } from '../../sanity/lib/client';
 import Image from 'next/image';
 
+interface Product {
+  _id: string;
+  name: string;
+  price: number;
+  image: {
+    asset: {
+      url: string;
+    };
+  };
+  discountPercentage?: number; // Optional, because some products might not have a discount
+  stockLevel: number;
+  category: string;
+}
 async function fetchProducts() {
   // Fetch products from Sanity
   const query = `*[_type == "product"]{
@@ -23,7 +36,7 @@ async function fetchProducts() {
 }
 
 function ProductListing() {
-  const [products, setProducts] = useState<any[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(true);
 

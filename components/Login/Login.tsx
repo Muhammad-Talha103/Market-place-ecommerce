@@ -116,7 +116,7 @@ const Login = () => {
                 <p
                   className={`${lato.className} text-[#9096B2] text-[17px] font-normal leading-[20.4px] cursor-pointer mt-4`}
                 >
-                  Don't have an Account? <Link href={"/SignUp"}>Create account</Link>
+                  Don&apos;t have an Account? <Link href={"/SignUp"}>Create account</Link>
                 </p>
               </form>
             </div>

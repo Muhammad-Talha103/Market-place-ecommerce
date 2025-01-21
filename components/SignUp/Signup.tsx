@@ -50,7 +50,7 @@ const Signup = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+  
     // Basic validation
     if (password !== confirmPassword) {
       setErrorMessage("Passwords do not match.");
@@ -64,10 +64,8 @@ const Signup = () => {
       setErrorMessage("This email is already registered.");
       return;
     }
-
+  
     try {
-    
-
       // Reset form fields upon success
       setFullName("");
       setEmail("");
@@ -75,15 +73,16 @@ const Signup = () => {
       setConfirmPassword("");
       setTermsAccepted(false);
       setErrorMessage(""); // Reset any error messages
-
+  
       alert("User signed up successfully");
       // Optionally, redirect the user to a different page after successful signup
     } catch (error) {
+      console.error("Error during signup:", error); // Log the error to the console
       setErrorMessage("An error occurred while signing up. Please try again.");
       alert("Error during signup");
     }
   };
-
+  
   return (
     <>
       <Hero heading="Create Account" tittle="Home . Page" text="Signup" />
