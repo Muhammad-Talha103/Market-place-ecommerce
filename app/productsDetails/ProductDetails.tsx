@@ -7,12 +7,8 @@ import { RootState } from "@/redux/store";
 import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
 import { useState } from "react";
 import { addToWishlist, removeFromWishlist } from "@/redux/wishlistSlice";
-import Image2 from "@/images/LatestProduct1.png";
-import Image3 from "@/images/TopCategoryImg4.png";
-import Image4 from "@/images/LatestProduct6.png";
 import { addToCart } from "@/redux/productSlice";
 import {urlFor} from "../../sanity/lib/image"
-import Items from "./ProductsDetailsItemList";
 
 const josefinFont = Josefin_Sans({
   subsets: ["latin"],

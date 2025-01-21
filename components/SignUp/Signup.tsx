@@ -21,6 +21,10 @@ const emailQuery = `*[_type == "signup"]{
   email
 }`;
 
+type SignupDocument = {
+  email: string;
+};
+
 const Signup = () => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -35,7 +39,7 @@ const Signup = () => {
     const fetchEmails = async () => {
       try {
         const result = await client.fetch(emailQuery);
-        const existingEmails = result.map((doc: any) => doc.email);
+        const existingEmails = result.map((doc: SignupDocument) => doc.email);
         setEmails(existingEmails);  // Store emails in state
       } catch (error) {
         console.error("Error fetching emails:", error);
