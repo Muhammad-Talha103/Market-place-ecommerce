@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 import Container from "@/shared/Container";
 import Image1 from "@/images/Partners.png";
 import { Josefin_Sans, Lato } from "next/font/google";
@@ -32,15 +32,15 @@ const Signup = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [emails, setEmails] = useState<string[]>([]);  // Store existing emails
+  const [emails, setEmails] = useState<string[]>([]);  
 
-  // Fetch existing emails from the Sanity database when the component mounts
-  React.useEffect(() => {
+
+  useEffect(() => {
     const fetchEmails = async () => {
       try {
         const result = await client.fetch(emailQuery);
         const existingEmails = result.map((doc: SignupDocument) => doc.email);
-        setEmails(existingEmails);  // Store emails in state
+        setEmails(existingEmails); 
       } catch (error) {
         console.error("Error fetching emails:", error);
       }
@@ -48,10 +48,12 @@ const Signup = () => {
     fetchEmails();
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   
-    // Basic validation
+
     if (password !== confirmPassword) {
       setErrorMessage("Passwords do not match.");
       return;
@@ -66,18 +68,30 @@ const Signup = () => {
     }
   
     try {
-      // Reset form fields upon success
+      const signupData = {
+        _type: "signup",
+        fullName,
+        email,
+        password,
+        confirmPassword,
+        termsAccepted,
+      };
+  
+      
+      await client.create(signupData);
+  
+    
       setFullName("");
       setEmail("");
       setPassword("");
       setConfirmPassword("");
       setTermsAccepted(false);
-      setErrorMessage(""); // Reset any error messages
+      setErrorMessage(""); 
   
       alert("User signed up successfully");
-      // Optionally, redirect the user to a different page after successful signup
+  
     } catch (error) {
-      console.error("Error during signup:", error); // Log the error to the console
+      console.error("Error during signup:", error); 
       setErrorMessage("An error occurred while signing up. Please try again.");
       alert("Error during signup");
     }

@@ -1,5 +1,5 @@
-// schemas/signup.ts
-import { Rule } from '@sanity/types'; // Import Rule type
+
+import { Rule } from '@sanity/types'; 
 
 export default {
   name: "signup",
@@ -10,7 +10,7 @@ export default {
       name: "fullName",
       title: "Full Name",
       type: "string",
-      validation: (Rule: Rule) => Rule.required().min(3).max(100), // Explicit typing for Rule
+      validation: (Rule: Rule) => Rule.required().min(3).max(100),
     },
     {
       name: "email",
