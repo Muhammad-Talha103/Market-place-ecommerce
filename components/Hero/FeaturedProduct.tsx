@@ -52,8 +52,6 @@ const FeaturedProduct = () => {
         quantity: 1,
       })
     );
-    // Display a success message or toast to indicate the product has been added
-    alert(`${item.name} has been added to your cart!`);
   };
 
   useEffect(() => {

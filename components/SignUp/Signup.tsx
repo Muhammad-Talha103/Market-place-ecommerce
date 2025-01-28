@@ -5,12 +5,13 @@ import Image1 from "@/images/Partners.png";
 import { Josefin_Sans, Lato } from "next/font/google";
 import Image from "next/image";
 import Hero from '@/shared/HeroShared';
-import { client } from '@/sanity/lib/client';  // Import the Sanity client
+import { client } from '@/sanity/lib/client';  
 import Link from "next/link";
 
 const josefinFont = Josefin_Sans({
   subsets: ["latin"],
   weight: ["400", "700"],
+
 });
 const lato = Lato({
   subsets: ["latin"],

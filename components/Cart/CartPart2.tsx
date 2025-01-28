@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import {  useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { Josefin_Sans, Lato } from "next/font/google";
+import Link from "next/link";
 
 const josefinFont = Josefin_Sans({
   subsets: ["latin"],
@@ -64,11 +65,11 @@ const CartPart2 = () => {
                 Shipping & taxes calculated at checkout
               </p>
             </div>
-            <button
+            <Link href='/cart/payment'
               className={`${lato.className} font-bold text-[14px] bg-[#19D16F] h-[40px] rounded-[3px] w-full text-white`}
             >
               Proceed To Checkout
-            </button>
+            </Link>
           </div>
         </div>
         <h2

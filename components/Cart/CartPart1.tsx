@@ -106,8 +106,8 @@ const CartPart1 = () => {
 
           <div
             className={`${josefinFont.className} mt-5 ssm:mt-10 flex flex-col gap-2 items-end ssm:items-center lgl:items-end col-span-2 ssm:col-span-1 text-[#15245E] text-[14px] `}
-          >
-            <div> ${item.price ? item.price * item.quantity : 0}</div>
+          > ${item.price ? item.price * item.quantity : 0}
+            <div></div>
           </div>
         </div>
       ))}
