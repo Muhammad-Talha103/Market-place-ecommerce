@@ -5,8 +5,6 @@ import Image1 from "@/images/Partners.png";
 import { Josefin_Sans, Lato } from "next/font/google";
 import Image from "next/image";
 import Hero from "@/shared/HeroShared";
-
-
 const josefinFont = Josefin_Sans({
   subsets: ["latin"],
   weight: ["400", "700"],
