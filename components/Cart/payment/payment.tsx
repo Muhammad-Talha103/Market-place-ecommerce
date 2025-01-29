@@ -2,6 +2,7 @@
 import Container from "@/shared/Container";
 import Image from "next/image";
 import { client } from "@/sanity/lib/client";
+import { StaticImageData } from "next/image";
 import { Josefin_Sans, Lato } from "next/font/google";
 import Hero from "@/shared/HeroShared";
 import { useSelector } from "react-redux";
@@ -17,13 +18,44 @@ const lato = Lato({
   weight: ["400", "700"],
 });
 
-const sendOrderToSanity = (orderData: any) => {
+interface Product {
+  _key: string;
+  productId: string;
+  productImage: string | StaticImageData;
+  productName: string;
+  quantity: number;
+  price: number;
+  totalPrice: number;
+}
+
+interface ShippingAddress {
+  street: string;
+  city: string;
+  postalCode: string;
+  country: string;
+}
+
+interface OrderData {
+  orderId: string;
+  email: string;
+  name: string;
+  products: Product[];
+  totalAmount: number;
+  shippingAddress: ShippingAddress;
+  orderStatus: string;
+  paymentStatus: string;
+  orderDate: string;
+  shippingDate: string;
+  trackingNumber: string;
+}
+
+const sendOrderToSanity = (orderData: OrderData) => {
   client
     .create({
       _type: "order",
       orderId: orderData.orderId,
       email: orderData.email,
-      name: orderData.name, 
+      name: orderData.name,
       products: orderData.products,
       totalAmount: orderData.totalAmount,
       shippingAddress: orderData.shippingAddress,
@@ -33,7 +65,7 @@ const sendOrderToSanity = (orderData: any) => {
       shippingDate: orderData.shippingDate,
       trackingNumber: orderData.trackingNumber,
     })
-    .then((res) => {
+    .then((res ) => {
       console.log("Order saved to Sanity:", res);
     })
     .catch((err) => {
@@ -81,17 +113,17 @@ const Payment = () => {
     };
   
    
-    const orderData = {
+    const orderData: OrderData = {
       orderId: generateOrderId(),
       email: email,
       name: firstName + " " + lastName,
       products: products.map((item) => ({
         _key: generateUniqueKey(), 
-        productId: item.id,
+        productId: item.id.toString(),
         productImage: item.image,
-        productName: item.title,
+        productName: item.title || "",
         quantity: item.quantity,
-        price: item.price,
+        price: item.price || 0,
         totalPrice: item.price ? item.price * item.quantity : 0 
       })),
       totalAmount: total,
