@@ -250,7 +250,7 @@ const Payment = () => {
             <div className="h-auto lg:h-[102px] w-full ">
               <div className="flex flex-col   h-[650px] py-4 overflow-y-scroll">
                 {products.map((item) => (
-                  <div className="flex flex-col justify-end ">
+                  <div key={item.id} className="flex flex-col justify-end ">
                     <div className="flex justify-between items-center px-3">
                       <div className="flex relative  gap-2 items-center">
                         <Image
